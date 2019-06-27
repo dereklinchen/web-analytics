@@ -14,7 +14,7 @@ if(window.attachEvent) {
 }
 
 var _waq = _waq || [];
-var endpoint = "https://analytics.bioregionalassessments.gov.au/collector/msg";
+var endpoint = "https://collector.bioregionalassessments.gov.au/msg";
 
 var wa = function(func, params) {
     sendTracking(null, params.eventAction + " " + params.hitType, params);
