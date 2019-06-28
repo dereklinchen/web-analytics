@@ -32,6 +32,7 @@ function sendTracking(evt, event_name = 'pageview', params = {}) {
     var title = params.eventCategory ? params.eventCategory + " " + params.eventAction + " " + params.hitType : document.title;
     var url = params.eventLabel ? params.eventLabel : window.location.href;
 
+    /*
     var sBrowser, sUsrAg = navigator.userAgent;
 
     if (sUsrAg.indexOf("Firefox") > -1) {
@@ -55,6 +56,7 @@ function sendTracking(evt, event_name = 'pageview', params = {}) {
     } else {
     sBrowser = "unknown";
     }
+    */
 
     getJSON("https://api.ipify.org?format=json&callback=?", function(err, response) {
         //var date = new Date();
@@ -65,7 +67,7 @@ function sendTracking(evt, event_name = 'pageview', params = {}) {
         _waq.push(['referrer', document.referrer]);
         _waq.push(['timestamp', localISOTime]);
         _waq.push(['ip_address', JSON.parse(response).ip]);
-        _waq.push(['user_agent', sBrowser]);
+        _waq.push(['user_agent', navigator.userAgent]);
         _waq.push(['event_name', event_name]);
         _waq.push(['topic', "web-analytics"]);
         postJSON(endpoint, _waq, function(err, response) {});
